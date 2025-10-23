@@ -1,0 +1,729 @@
+/*
+ * Paleta de Colores:
+ * Base: Blanco (#FFFFFF) y Negro (#000000 / #212529)
+ * Primario (Azul Frío Pastel): #6699CC (Para la maquetación, usaré un tono ligeramente más vibrante para el CTA, como #3C8CE7, y el azul oscuro del logo para el fondo del nav)
+ * Fondo de Secciones: #F8F9FA (Gris muy claro)
+ */
+
+:root {
+    --primary-color-blue: #3C8CE7;
+    /* Azul Vibrante para CTA */
+    --primary-color-dark: #1A374D;
+    /* Azul Oscuro del logo/Nav */
+    --secondary-color-light: #F8F9FA;
+    /* Gris Claro para fondos */
+    --pastel-blue-light: #9BB8D0;
+    /* Tono pastel de la gama */
+    --font-family-base: 'Poppins', sans-serif;
+}
+
+/* Prevenir scroll horizontal */
+html {
+    overflow-x: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: #212529;
+    /* Negro ligeramente suave */
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Asegurar que todos los elementos no excedan el ancho de la pantalla */
+* {
+    box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Márgenes y espacios de aire consistentes */
+.container,
+.container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (min-width: 576px) {
+    .container,
+    .container-fluid {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container,
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+/* --- NAV BAR --- */
+
+.navbar {
+    background-color: var(--primary-color-dark);
+    /* Fondo del nav en azul oscuro */
+    transition: background-color 0.3s ease;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+.navbar .container-fluid {
+    max-width: 100%;
+}
+
+.navbar .navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Logo del navbar */
+.navbar .navbar-brand img {
+    max-width: 35px;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-brand img {
+        max-width: 40px;
+    }
+}
+
+.logo-curly {
+    color: var(--pastel-blue-light);
+    /* Color similar al pastel del logo */
+    font-size: 2rem;
+    font-weight: 300;
+    margin-right: 5px;
+}
+
+.logo-dev {
+    color: var(--primary-color-blue);
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo del botón de Contacto en el Nav */
+.btn-primary-custom {
+    background-color: var(--primary-color-blue);
+    border-color: var(--primary-color-blue);
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary-custom:hover,
+.btn-primary-custom:focus {
+    background-color: #316BB0;
+    /* Tono más oscuro de azul */
+    border-color: #316BB0;
+    color: white;
+}
+
+.btn-outline-primary-custom {
+    color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+    font-weight: 600;
+}
+
+.btn-outline-primary-custom:hover {
+    background-color: var(--primary-color-dark);
+    color: white;
+}
+
+/* --- HERO SECTION --- */
+
+.masthead {
+    padding-top: calc(6rem + 56px);
+    /* Espacio para el navbar fijo */
+    padding-bottom: 6rem;
+    /* Fondo oscuro para el efecto de 'banner' del logo negro */
+    background-color: #0d0d0d;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><defs><radialGradient id="g" cx="50%" cy="50%" r="60%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:rgb(26, 55, 77, 0.8)" /><stop offset="100%" style="stop-color:rgb(13, 13, 13, 1)" /></radialGradient></defs><rect width="100%" height="100%" fill="url(#g)"/></svg>');
+    margin-bottom: 2rem;
+}
+
+.masthead .container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Logo animado del hero - Responsive */
+.hero-logo img {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+@media (min-width: 576px) {
+    .hero-logo img {
+        max-width: 350px;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-logo img {
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-logo img {
+        max-width: 750px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero-logo img {
+        max-width: 850px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero-logo img {
+        max-width: 900px;
+    }
+}
+
+.masthead-heading {
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.masthead-subheading {
+    font-size: 1.25rem;
+    color: var(--pastel-blue-light);
+}
+
+@media (min-width: 992px) {
+    .masthead {
+        padding-top: calc(5rem + 56px);
+        padding-bottom: 6rem;
+    }
+
+    .masthead-heading {
+        font-size: 3.5rem;
+    }
+
+    .masthead-subheading {
+        font-size: 1.5rem;
+    }
+
+    .hero-logo {
+        margin-bottom: 2.5rem !important;
+    }
+}
+
+/* --- SECTIONS --- */
+
+.page-section {
+    padding: 5rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-section:first-of-type {
+    margin-top: 0;
+}
+
+.page-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.page-section .container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.page-section-heading {
+    font-size: 2.25rem;
+    color: var(--primary-color-dark);
+    margin-bottom: 2.5rem;
+}
+
+/* Sección de Misión (fondo azul) */
+.bg-light-blue {
+    background-color: var(--primary-color-dark);
+    color: white;
+}
+
+.mission-icon {
+    font-size: 3rem;
+    color: var(--primary-color-blue);
+    margin-bottom: 1rem;
+}
+
+/* Portfolio Items */
+.portfolio-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.portfolio-caption h4 {
+    font-weight: 600;
+}
+
+/* Testimonios */
+.testimonial-card {
+    background-color: white;
+    border: 1px solid var(--pastel-blue-light);
+    border-top: 5px solid var(--primary-color-blue);
+    border-radius: 8px;
+    min-height: 180px;
+}
+
+/* --- CONTACT FORM --- */
+
+/* Contact Section */
+.contact {
+    background-color: #f1f1f1;
+    padding: 5rem 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact .container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.contact textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Cloudflare Turnstile Widget */
+.cf-turnstile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.cf-turnstile {
+    transform-origin: center;
+}
+
+/* Responsive para mobile */
+@media (max-width: 576px) {
+    .cf-turnstile {
+        transform: scale(0.85);
+    }
+}
+
+#btn-submit {
+    background-color: var(--primary-color-blue);
+    border-color: var(--primary-color-blue);
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 2em;
+    border: 2px solid var(--primary-color-blue);
+    cursor: pointer;
+}
+
+#btn-submit:hover {
+    background-color: #316BB0;
+    border-color: #316BB0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(60, 140, 231, 0.3);
+}
+
+#btn-submit:active {
+    transform: translateY(0);
+}
+
+/*
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #1f2e6e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background-color: #212529;
+    /* Fondo oscuro */
+    color: white;
+    margin-top: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.footer .container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Logo del footer - Responsive */
+.logo-footer img {
+    max-width: 120px;
+    height: auto;
+}
+
+@media (min-width: 576px) {
+    .logo-footer img {
+        max-width: 150px;
+    }
+}
+
+@media (min-width: 992px) {
+    .logo-footer img {
+        max-width: 220px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .logo-footer img {
+        max-width: 260px;
+    }
+}
+
+.footer .logo-curly,
+.footer .logo-dev {
+    color: white;
+    /* Cambiar colores para contraste */
+}
+
+.footer .logo-curly {
+    color: var(--pastel-blue-light);
+}
+
+.footer a {
+    color: var(--pastel-blue-light);
+}
+
+.footer a:hover {
+    color: var(--primary-color-blue);
+}
+
+.btn-social {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.btn-social:hover {
+    background-color: var(--primary-color-blue);
+    color: white;
+}
+
+/* --- WHATSAPP CTA FLOTANTE --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    /* Verde WhatsApp */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Media Query para Mobile (Asegurar buena experiencia) */
+@media (max-width: 768px) {
+    /* Reducir padding en mobile pero mantener espacios de aire */
+    .page-section {
+        padding: 3rem 0;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .masthead {
+        padding-top: calc(4rem + 56px);
+        padding-bottom: 4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .masthead .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .contact {
+        padding: 3rem 0;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer {
+        margin-top: 1.5rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Márgenes laterales más pequeños en mobile */
+    .container,
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* NAVBAR MOBILE - Centrado y en columna */
+    .navbar .container-fluid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .navbar-brand {
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar-toggler {
+        margin-top: 0.5rem;
+    }
+
+    .navbar-collapse {
+        background-color: var(--primary-color-dark);
+        /* Fondo para el menú expandido */
+        padding: 1rem 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar .nav-link {
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+
+    .navbar-nav {
+        align-items: center;
+    }
+
+    /* FOOTER MOBILE - Centrado y en columna */
+    .footer .row {
+        text-align: center !important;
+    }
+
+    .footer .col-lg-4 {
+        text-align: center !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer .text-lg-start,
+    .footer .text-lg-end {
+        text-align: center !important;
+    }
+
+    /* HERO SECTION - Centrado */
+    .masthead .container {
+        text-align: center;
+    }
+
+    .hero-logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* SECCIONES - Todo centrado en mobile */
+    .page-section .container {
+        text-align: center;
+    }
+
+    .page-section .row {
+        justify-content: center;
+    }
+
+    /* IMÁGENES - Ajustes adicionales para mobile */
+    .hero-logo img {
+        max-width: 280px;
+    }
+
+    .navbar .navbar-brand img {
+        max-width: 30px;
+    }
+
+    .logo-footer img {
+        max-width: 180px;
+    }
+
+    .navbar .navbar-brand {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+    position: relative;
+}
+
+.modal-content i {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+    color: var(--primary-color-dark);
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.modal-content p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.modal-close-btn {
+    background-color: var(--primary-color-blue);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background-color: #316BB0;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
