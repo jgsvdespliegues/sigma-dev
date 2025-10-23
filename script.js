@@ -42,11 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = document.getElementById('btn-submit');
             const originalText = submitButton.innerHTML;
 
-            // Verificar que Turnstile esté completado
+            // Verificar Turnstile (advertencia en consola si falla, pero no bloquea)
             const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]');
             if (!turnstileResponse || !turnstileResponse.value) {
-                alert('Por favor, complete la verificación de seguridad.');
-                return;
+                console.warn('⚠️ Turnstile no completado - enviando sin verificación adicional');
             }
 
             // Cambiar el texto del botón mientras se envía
