@@ -42,12 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitButton = document.getElementById('btn-submit');
             const originalText = submitButton.innerHTML;
 
-            // Verificar Turnstile (advertencia en consola si falla, pero no bloquea)
-            const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]');
-            if (!turnstileResponse || !turnstileResponse.value) {
-                console.warn('⚠️ Turnstile no completado - enviando sin verificación adicional');
-            }
-
             // Cambiar el texto del botón mientras se envía
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Enviando...';
             submitButton.disabled = true;
@@ -63,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
 
+                // Verificar si la respuesta fue exitosa (200-299)
                 if (response.ok) {
                     // Mostrar modal de éxito
                     showModal();
@@ -70,27 +65,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Limpiar el formulario
                     contactForm.reset();
 
-                    // Resetear Turnstile
-                    if (window.turnstile) {
-                        window.turnstile.reset();
-                    }
-
                     // Restaurar el botón
                     submitButton.innerHTML = originalText;
                     submitButton.disabled = false;
                 } else {
+                    // Si el servidor responde con error
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error('Error del servidor:', errorData);
                     throw new Error('Error al enviar el formulario');
                 }
             } catch (error) {
-                // En caso de error, mostrar alerta
+                // En caso de error real (red, servidor, etc.)
+                console.error('Error al enviar:', error);
                 alert('Hubo un error al enviar el mensaje. Por favor, intente nuevamente.');
                 submitButton.innerHTML = originalText;
                 submitButton.disabled = false;
-
-                // Resetear Turnstile en caso de error
-                if (window.turnstile) {
-                    window.turnstile.reset();
-                }
             }
         });
     }
