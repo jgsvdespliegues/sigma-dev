@@ -6,8 +6,12 @@
       "dest": "/assets/$1"
     },
     {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico))",
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|html))",
       "dest": "/$1"
+    },
+    {
+      "src": "/success.html",
+      "dest": "/success.html"
     },
     {
       "src": "/(.*)",
