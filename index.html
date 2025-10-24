@@ -198,14 +198,12 @@
                     <div class="col-lg-7">
                         <p class="lead text-center mb-4">Cuéntanos sobre tu idea. En Sigma Dev, transformamos conceptos
                             en soluciones digitales funcionales, atractivas y rentables.</p>
-                        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                            <!-- Web3Forms Access Key - Reemplazar con tu clave -->
-                            <input type="hidden" name="access_key" value="6c9d4b4c-4d9a-48ce-88ef-d89a6c0c6327">
-
-                            <!-- Configuración opcional de Web3Forms -->
-                            <input type="hidden" name="subject" value="Nuevo mensaje desde Sigma Dev">
-                            <input type="hidden" name="from_name" value="Sigma Dev - Formulario de Contacto">
-                            <input type="hidden" name="redirect" value="false">
+                        <form id="contactForm" action="https://formsubmit.co/contacto@sigma-dev.com.ar" method="POST">
+                            <!-- FormSubmit configuración -->
+                            <input type="hidden" name="_subject" value="Nuevo mensaje desde Sigma Dev">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://www.sigma-dev.com.ar">
 
                             <!-- Campos del formulario -->
                             <input type="text" name="name" placeholder="Nombre" required>
@@ -213,15 +211,12 @@
                             <textarea name="message" placeholder="Mensaje" required></textarea>
 
                             <!-- Honeypot anti-spam (campo oculto) -->
-                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                            <input type="text" name="_honey" style="display:none">
 
                             <!-- Cloudflare Turnstile Widget -->
                             <div class="cf-turnstile-wrapper">
-                                <div class="cf-turnstile"
-                                     data-sitekey="0x4AAAAAAB8VMZYB9c_7v8le"
-                                     data-theme="light"
-                                     data-size="normal"
-                                     data-callback="onTurnstileSuccess">
+                                <div class="cf-turnstile" data-sitekey="0x4AAAAAAB8VMZYB9c_7v8le" data-theme="light"
+                                    data-size="normal" data-callback="onTurnstileSuccess">
                                 </div>
                             </div>
 

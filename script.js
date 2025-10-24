@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 2. Manejo del formulario con Web3Forms + Cloudflare Turnstile
+   // 2. Manejo del formulario con FormSubmit + Cloudflare Turnstile
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Verificar que Turnstile esté completado
             const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]');
             if (!turnstileResponse || !turnstileResponse.value) {
-                alert('Por favor, complete la verificación de seguridad.');
+                alert('Por favor, complete la verificación de seguridad (Turnstile).');
                 return;
             }
 
@@ -54,16 +54,17 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
 
             try {
-                // Enviar el formulario a Web3Forms usando fetch
+                // Enviar el formulario a FormSubmit usando fetch
                 const formData = new FormData(contactForm);
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
-                const data = await response.json();
-
-                if (data.success) {
+                if (response.ok) {
                     // Mostrar modal de éxito
                     showModal();
 
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitButton.innerHTML = originalText;
                     submitButton.disabled = false;
                 } else {
-                    throw new Error(data.message || 'Error al enviar el formulario');
+                    throw new Error('Error al enviar el formulario');
                 }
             } catch (error) {
                 // En caso de error
@@ -96,26 +97,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// Callback cuando Turnstile se completa exitosamente
-function onTurnstileSuccess(token) {
-    console.log('✅ Turnstile completado exitosamente');
-}
-
-// Función para mostrar el modal
-function showModal() {
-    const modal = document.getElementById('successModal');
-    modal.classList.add('active');
-}
-
-// Función para cerrar el modal
-function closeModal() {
-    const modal = document.getElementById('successModal');
-    modal.classList.remove('active');
-
-    // Redirigir al inicio de la página con scroll suave
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
